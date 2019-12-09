@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Assignment2WebApplication.Models.Room>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SuiteId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SuiteNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RentAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Occupied)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Window)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Closit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bathroom)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SuiteId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SuiteNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Occupied)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Window)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Closit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bathroom)
+            </td>
+            <td>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-action="Edit" asp-route-id="@item.RoomId">Edit |</a>
+                    <a asp-action="Details" asp-route-id="@item.RoomId">Details |</a>
+                    <a asp-action="Delete" asp-route-id="@item.RoomId">Delete</a>
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
